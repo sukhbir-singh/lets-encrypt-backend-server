@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace 'api' do
+    namespace 'v1' do
+      get "db/status" => "le_users#db_status"
+      post "db/new" => "le_users#db_create"
+      
+    end
+  end
 end
