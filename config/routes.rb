@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  post "/certi/generate" => "lets_encrypt#generate_certificate"
+  post "/certi/renew" => "lets_encrypt#renew_certificate"
+  post "/certi/delete" => "lets_encrypt#delete_certificate"
 end
