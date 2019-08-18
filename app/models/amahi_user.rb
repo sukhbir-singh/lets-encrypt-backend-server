@@ -1,0 +1,2 @@
+class AmahiUser < ApplicationRecord
+end

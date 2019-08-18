@@ -12,15 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_08_16_211438) do
 
-  create_table "amahi_users", force: :cascade do |t|
+  create_table "amahi_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "api_key"
     t.string "username"
+    t.string "hdaname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lets_encrypt_logs", force: :cascade do |t|
-    t.integer "amahi_users_id"
+  create_table "lets_encrypt_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "amahi_users_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,0 +1,2 @@
+class LetsEncryptLog < ApplicationRecord
+end
