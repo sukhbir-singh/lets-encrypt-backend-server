@@ -1,4 +1,9 @@
 class LetsEncryptController < ApplicationController
+
+	def dashboard
+		render "layouts/dashboard"
+	end
+
 	def generate_certificate
 		render :json => {success: true, message: "generated successfully"}
 	end
