@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  namespace 'api' do
-    namespace 'v1' do
-      get "db/status" => "le_users#db_status"
-      post "db/new" => "le_users#db_create"
-      
-    end
-  end
+  get "/dashboard" => "lets_encrypt#dashboard"
+  post "/certi/generate" => "lets_encrypt#generate_certificate"
+  post "/certi/renew" => "lets_encrypt#renew_certificate"
+  post "/certi/delete" => "lets_encrypt#delete_certificate"
 end
