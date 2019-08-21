@@ -5,9 +5,12 @@ class LetsEncryptController < ApplicationController
 	end
 
 	def generate_certificate
-		success = HelperMethods.generateCert(generate_certificate_params)
-        if success
-            ender :json => {success: true, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
+		api = params[:api_key]
+        user = AmahiUser.where(["api_key = ?", api]).pluck(:hdaname)
+      
+		#success = HelperMethods.generateCert(generate_certificate_params)
+        if user
+            render :json => {success: true, last_generated_at: user, expiry_date: "8 december 2019 11:59:00"}
         else
         	render :json => {success: false, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
         end
