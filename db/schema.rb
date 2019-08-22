@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_08_16_211438) do
 
-  create_table "amahi_users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "amahi_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf-8", force: :cascade do |t|
     t.string "api_key"
     t.string "username"
     t.string "hdaname"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_211438) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lets_encrypt_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "lets_encrypt_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf-8", force: :cascade do |t|
     t.bigint "amahi_users_id"
     t.string "status"
     t.datetime "created_at", null: false
