@@ -2,8 +2,7 @@ class HelperMethods
     def self.generateCert(params)
         # get variables
         api = params[:api_key]
-        @user = AmahiUser.where(["api_key = ?", api]).pluck(:hdaname)
-        puts(user)
+        @user = AmahiUser.where("api_key = ?", api).pluck(:hdaname).first
 
 
         # fetch hda name from db
@@ -31,14 +30,16 @@ class HelperMethods
         body = JSON.parse(response.body)
         # 
         # if success store the generated cert in local db
-        user_id = AmahiUser.add(insert_log_params)
-        if user_id.save
-            render :json => {success: true, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
-        else
-        	render :json => {success: false, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
-        end
+
+
+        #user_id = AmahiUser.add(insert_log_params)
+        #if user_id.save
+        #    render :json => {success: true, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
+        #else
+        #	render :json => {success: false, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
+        #end
         
-        return (current_status)
+        #return (current_status)
 
         # forward the cert to plugin for install
         #
