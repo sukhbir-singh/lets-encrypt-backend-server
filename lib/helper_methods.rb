@@ -87,6 +87,7 @@ class HelperMethods
         url = "http://localhost:5004/api/v1/certi/generate"
         uri = URI(url)
         http = Net::HTTP.new(uri.host, uri.port)
+        http.read_timeout = 1000
         http.use_ssl = false   # make it true in production
         request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
         request.body = {"hda_name" => "#{@hdaname}", "domain" => "#{@domain_name}"}.to_json # SOME JSON DATA e.g {msg: 'Why'}.to_json
