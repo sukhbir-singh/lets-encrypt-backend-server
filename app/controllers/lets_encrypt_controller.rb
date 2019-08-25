@@ -8,7 +8,7 @@ class LetsEncryptController < ApplicationController
 		
 		success = HelperMethods.generateCert(generate_certificate_params)
         if success
-            render :json => {success: true, last_generated_at: "abcd", expiry_date: "8 december 2019 11:59:00"}
+            render :json => {success: true, last_generated_at: success, expiry_date: "8 december 2019 11:59:00"}
         else
         	render :json => {success: false, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
         end
@@ -26,6 +26,15 @@ class LetsEncryptController < ApplicationController
 		new_user = AmahiUser.new(add_user_params)
         if new_user.save
             render :json => {success: true, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
+        else
+        	render :json => {success: false, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
+        end
+	end
+
+	def check_status
+		success = HelperMethods.statusCert(generate_certificate_params)
+        if success
+            render :json => {success: true, last_generated_at: success, expiry_date: "8 december 2019 11:59:00"}
         else
         	render :json => {success: false, last_generated_at: "16 september 2019 12:00:01", expiry_date: "8 december 2019 11:59:00"}
         end
